@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-display: "Space Grotesk", sans-serif;
+  
+  --color-vibe-bg: #000000;
+  --color-vibe-ink: #00ff00;
+  --color-vibe-accent: #ff00ff;
+}
+
+@layer base {
+  body.vibe-mode {
+    @apply bg-zinc-950 text-green-400;
+  }
+  
+  body {
+    @apply bg-white text-zinc-950 antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+.vibe-mode .glass {
+  @apply bg-black/80 border-green-500/30;
+}
+
+.vibe-mode h1, .vibe-mode h2, .vibe-mode h3 {
+  @apply text-green-400 uppercase italic;
+  text-shadow: 2px 2px 0px #ff00ff;
+}
+
+.vibe-mode p {
+  @apply text-zinc-400 font-mono;
+}
+
+.vibe-mode button, .vibe-mode a.bg-zinc-950 {
+  @apply bg-green-500 text-black border-2 border-green-400 hover:bg-green-400;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.glass {
+  @apply bg-white/70 backdrop-blur-md border border-white/20;
+}
+
+.blog-content {
+  @apply prose prose-zinc max-w-none prose-headings:font-display prose-a:text-blue-600;
+}

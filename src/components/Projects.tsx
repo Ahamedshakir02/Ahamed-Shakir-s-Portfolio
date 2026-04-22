@@ -1,0 +1,78 @@
+import { motion } from 'framer-motion';
+import { ExternalLink, Github } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { dataService } from '../services/dataService';
+import type { Project } from '../types';
+
+export default function Projects() {
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  useEffect(() => {
+    return dataService.subscribeToProjects(setProjects);
+  }, []);
+
+  return (
+    <section id="projects" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+          <div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 block mb-4">
+              Selected Work
+            </span>
+            <h2 className="text-4xl md:text-6xl font-display font-medium tracking-tight">
+              Crafting <span className="italic font-serif">Solutions</span>
+            </h2>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.id || project.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="group cursor-pointer"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden rounded-3xl bg-zinc-100 mb-8">
+                <img 
+                  src={project.image || `https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop`} 
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-zinc-950/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+                  {project.link && (
+                    <a href={project.link} className="p-4 bg-white rounded-full text-zinc-950 hover:scale-110 transition-transform">
+                      <ExternalLink size={20} />
+                    </a>
+                  )}
+                  {project.github && (
+                    <a href={project.github} className="p-4 bg-white rounded-full text-zinc-950 hover:scale-110 transition-transform">
+                      <Github size={20} />
+                    </a>
+                  )}
+                </div>
+              </div>
+              
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.technologies.map(tech => (
+                  <span key={tech} className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              
+              <h3 className="text-3xl font-display font-bold mb-4 group-hover:translate-x-2 transition-transform">
+                {project.title}
+              </h3>
+              <p className="text-zinc-500 font-light leading-relaxed max-w-lg">
+                {project.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

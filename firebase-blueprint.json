@@ -1,0 +1,61 @@
+{
+  "entities": {
+    "posts": {
+      "title": "Blog Post",
+      "description": "A blog post entry",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Post title" },
+        "content": { "type": "string", "description": "Markdown content" },
+        "excerpt": { "type": "string", "description": "Brief summary" },
+        "publishedAt": { "type": "string", "format": "date-time", "description": "Publication date" },
+        "authorId": { "type": "string", "description": "UID of the author" },
+        "tags": { "type": "array", "items": { "type": "string" }, "description": "Topics" },
+        "coverImage": { "type": "string", "description": "URL to cover image" }
+      },
+      "required": ["title", "content", "publishedAt", "authorId"]
+    },
+    "projects": {
+      "title": "Project",
+      "description": "A portfolio project",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "technologies": { "type": "array", "items": { "type": "string" } },
+        "link": { "type": "string" },
+        "github": { "type": "string" },
+        "image": { "type": "string" },
+        "order": { "type": "number" }
+      },
+      "required": ["title", "description", "technologies"]
+    },
+    "experience": {
+      "title": "Work Experience",
+      "description": "A career milestone",
+      "type": "object",
+      "properties": {
+        "company": { "type": "string" },
+        "role": { "type": "string" },
+        "period": { "type": "string" },
+        "description": { "type": "string" },
+        "order": { "type": "number" }
+      },
+      "required": ["company", "role", "period"]
+    }
+  },
+  "firestore": {
+    "posts": {
+      "schema": "posts",
+      "description": "Public blog posts"
+    },
+    "projects": {
+      "schema": "projects",
+      "description": "Portfolio projects"
+    },
+    "experience": {
+      "schema": "experience",
+      "description": "Career highlights"
+    }
+  }
+}
