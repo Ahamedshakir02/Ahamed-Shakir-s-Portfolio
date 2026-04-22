@@ -36,16 +36,15 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <Link to="/" className="group flex items-center gap-2">
-          <div className="w-10 h-10 bg-zinc-950 rounded-xl flex items-center justify-center text-white font-display font-bold text-xl group-hover:scale-110 transition-transform">
-            A
-          </div>
-          <span className="font-display font-bold text-xl tracking-tight">Shakir</span>
+          <span className="font-display font-bold text-xl tracking-tight">Ahamed Shakir</span>
         </Link>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
-          <button 
+          <motion.button 
             onClick={toggleVibeMode}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             className={cn(
               "flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all",
               isVibeMode ? "bg-green-500 text-black shadow-[0_0_10px_#00ff00]" : "bg-zinc-100 text-zinc-600"
@@ -53,22 +52,25 @@ export default function Navbar() {
           >
             <Zap size={14} fill={isVibeMode ? "currentColor" : "none"} />
             {isVibeMode ? "Vibe Mode: ON" : "Vibe Mode"}
-          </button>
+          </motion.button>
           {navLinks.map((link) => (
-            <a
+            <motion.a
               key={link.name}
               href={link.href}
+              whileHover={{ y: -2 }}
               className="text-sm font-medium text-zinc-600 hover:text-zinc-950 transition-colors uppercase tracking-widest"
             >
               {link.name}
-            </a>
+            </motion.a>
           ))}
-          <Link 
-            to="/resume" 
-            className="px-5 py-2.5 bg-zinc-950 text-white text-xs font-bold uppercase tracking-widest rounded-full hover:bg-zinc-800 transition-colors"
-          >
-            Resume
-          </Link>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link 
+              to="/resume" 
+              className="px-5 py-2.5 bg-zinc-950 text-white text-xs font-bold uppercase tracking-widest rounded-full hover:bg-zinc-800 transition-colors block"
+            >
+              Resume
+            </Link>
+          </motion.div>
         </div>
 
         {/* Mobile Toggle */}

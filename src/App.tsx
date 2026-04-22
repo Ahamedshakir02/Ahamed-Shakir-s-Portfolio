@@ -26,7 +26,7 @@ export default function App() {
   return (
     <VibeProvider>
       <Router>
-        <div className="min-h-screen bg-white cursor-none">
+        <div className="min-h-screen bg-zinc-50 cursor-none">
           <CustomCursor />
           <Navbar />
           <Routes>

@@ -1,36 +1,54 @@
 import { motion } from 'framer-motion';
-import { Send, Mail, MapPin, Phone } from 'lucide-react';
+import { Send, Mail, MapPin, Instagram, Linkedin } from 'lucide-react';
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 bg-zinc-950 text-white rounded-t-[3rem] md:rounded-t-[5rem]">
+    <section id="contact" className="py-16 bg-zinc-950 text-white rounded-t-[3rem] md:rounded-t-[5rem]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 block mb-4">
               Get in Touch
             </span>
-            <h2 className="text-5xl md:text-7xl font-display font-medium tracking-tighter mb-8 italic font-serif">
+            <h2 className="text-4xl md:text-5xl font-display font-medium tracking-tighter mb-8 italic font-serif">
               Let's create something <span className="not-italic font-display font-bold">legendary</span>.
             </h2>
             
-            <div className="flex flex-col gap-8 mt-12">
+            <div className="flex flex-col gap-6 mt-12">
               <div className="flex items-center gap-6 group">
-                <div className="w-14 h-14 bg-zinc-900 rounded-2xl flex items-center justify-center group-hover:bg-zinc-800 transition-colors">
-                  <Mail className="text-white" size={24} />
+                <div className="w-12 h-12 bg-zinc-900 rounded-2xl flex items-center justify-center group-hover:bg-zinc-800 transition-colors">
+                  <Mail className="text-white" size={20} />
                 </div>
                 <div>
                   <div className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-1">Email</div>
-                  <div className="text-xl">ahamedshakir02@gmail.com</div>
+                  <a href="mailto:ahamedshakir02@gmail.com" className="text-lg hover:text-blue-400 transition-colors">ahamedshakir02@gmail.com</a>
                 </div>
               </div>
               <div className="flex items-center gap-6 group">
-                <div className="w-14 h-14 bg-zinc-900 rounded-2xl flex items-center justify-center group-hover:bg-zinc-800 transition-colors">
-                  <MapPin className="text-white" size={24} />
+                <div className="w-12 h-12 bg-zinc-900 rounded-2xl flex items-center justify-center group-hover:bg-zinc-800 transition-colors">
+                  <Linkedin className="text-white" size={20} />
+                </div>
+                <div>
+                  <div className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-1">LinkedIn</div>
+                  <a href="https://linkedin.com/in/ahamed-shakir" target="_blank" rel="noreferrer" className="text-lg hover:text-blue-400 transition-colors">ahamed-shakir</a>
+                </div>
+              </div>
+              <div className="flex items-center gap-6 group">
+                <div className="w-12 h-12 bg-zinc-900 rounded-2xl flex items-center justify-center group-hover:bg-zinc-800 transition-colors">
+                  <Instagram className="text-white" size={20} />
+                </div>
+                <div>
+                  <div className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-1">Instagram</div>
+                  <a href="https://instagram.com/ahamed_shakir_" target="_blank" rel="noreferrer" className="text-lg hover:text-pink-400 transition-colors">ahamed_shakir_</a>
+                </div>
+              </div>
+              <div className="flex items-center gap-6 group">
+                <div className="w-12 h-12 bg-zinc-900 rounded-2xl flex items-center justify-center group-hover:bg-zinc-800 transition-colors">
+                  <MapPin className="text-white" size={20} />
                 </div>
                 <div>
                   <div className="text-xs font-bold uppercase tracking-widest text-zinc-500 mb-1">Location</div>
-                  <div className="text-xl">Pattambi, Kerala, India</div>
+                  <div className="text-lg">Pattambi, Kerala, India</div>
                 </div>
               </div>
             </div>
@@ -77,12 +95,18 @@ export default function Contact() {
                   className="bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:border-white transition-colors resize-none"
                 />
               </div>
-              <button 
-                className="mt-4 flex items-center justify-center gap-3 px-8 py-4 bg-white text-zinc-950 rounded-xl font-bold uppercase tracking-widest hover:bg-zinc-200 transition-all active:scale-95"
+              <motion.button 
+                whileHover={{ 
+                  scale: 1.02, 
+                  y: -4,
+                  boxShadow: "0 10px 30px rgba(255,255,255,0.1)" 
+                }}
+                whileTap={{ scale: 0.98 }}
+                className="mt-4 flex items-center justify-center gap-3 px-8 py-4 bg-white text-zinc-950 rounded-xl font-bold uppercase tracking-widest hover:bg-zinc-200 transition-all"
               >
                 Send Message
                 <Send size={18} />
-              </button>
+              </motion.button>
             </form>
           </motion.div>
         </div>

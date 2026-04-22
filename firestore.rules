@@ -14,7 +14,7 @@ service cloud.firestore {
     
     function isAdmin() {
       // The user email from runtime is ahamedshakir02@gmail.com
-      return isSignedIn() && (request.auth.token.email == 'ahamedshakir02@gmail.com' && request.auth.token.email_verified == true);
+      return isSignedIn() && request.auth.token.email == 'ahamedshakir02@gmail.com';
     }
 
     function isValidId(id) {

@@ -18,7 +18,7 @@ export default function Experience() {
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 block mb-4">
               Career Path
             </span>
-            <h2 className="text-4xl md:text-5xl font-display font-medium tracking-tight mb-8">
+            <h2 className="text-3xl md:text-5xl font-display font-medium tracking-tight mb-8">
               Work <span className="italic font-serif">Experience</span>
             </h2>
             <p className="text-zinc-500 font-light leading-relaxed">

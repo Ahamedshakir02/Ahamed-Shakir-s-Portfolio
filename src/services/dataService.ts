@@ -59,80 +59,112 @@ export const dataService = {
 
   // Helper to seed initial data if empty
   async seedInitialDataIfNeeded() {
-    const projSnap = await getDocs(collection(db, 'projects'));
-    if (projSnap.empty) {
-      const sampleProjects = [
-        {
-          title: "AI-Based FIR Analysis",
-          description: "NLP-based system to extract structured information from unstructured FIR documents using Python and Regex.",
-          technologies: ["Python", "NLP", "Regex", "PDF Processing"],
-          link: "https://github.com/ahamedshakir02",
-          github: "https://github.com/ahamedshakir02",
-          order: 1
-        },
-        {
-          title: "Real-Time GPS Safety App",
-          description: "React Native mobile app connected to an ESP32 for real-time tracking and accident detection.",
-          technologies: ["React Native", "Firebase", "ESP32", "WebSockets"],
-          link: "https://github.com/ahamedshakir02",
-          github: "https://github.com/ahamedshakir02",
-          order: 2
-        },
-        {
-          title: "Disease Prediction ANN",
-          description: "Artificial Neural Network model achieving 98%+ accuracy in disease diagnosis using medical datasets.",
-          technologies: ["Python", "TensorFlow", "Scikit-Learn", "Pandas"],
-          link: "https://github.com/ahamedshakir02",
-          github: "https://github.com/ahamedshakir02",
-          order: 3
+    try {
+      const projSnap = await getDocs(collection(db, 'projects'));
+      if (projSnap.empty) {
+        const sampleProjects = [
+          {
+            title: "AI-Based FIR Analysis",
+            description: "NLP-based system to extract structured information from unstructured FIR documents using Python and Regex.",
+            technologies: ["Python", "NLP", "Regex", "PDF Processing"],
+            link: "https://github.com/ahamedshakir02",
+            github: "https://github.com/ahamedshakir02",
+            order: 1
+          },
+          {
+            title: "Real-Time GPS Safety App",
+            description: "React Native mobile app connected to an ESP32 for real-time tracking and accident detection.",
+            technologies: ["React Native", "Firebase", "ESP32", "WebSockets"],
+            link: "https://github.com/ahamedshakir02",
+            github: "https://github.com/ahamedshakir02",
+            order: 2
+          },
+          {
+            title: "Disease Prediction ANN",
+            description: "Artificial Neural Network model achieving 98%+ accuracy in disease diagnosis using medical datasets.",
+            technologies: ["Python", "TensorFlow", "Scikit-Learn", "Pandas"],
+            link: "https://github.com/ahamedshakir02",
+            github: "https://github.com/ahamedshakir02",
+            order: 3
+          },
+          {
+            title: "Handwriting Recognition",
+            description: "A deep learning tool to assist visually impaired individuals by converting handwritten text to digital formats.",
+            technologies: ["CNN", "OpenCV", "Python", "Keras"],
+            link: "https://github.com/ahamedshakir02",
+            github: "https://github.com/ahamedshakir02",
+            order: 4
+          },
+          {
+            title: "Smart Energy Management",
+            description: "IoT-based solution for monitoring and optimizing energy consumption in household appliances.",
+            technologies: ["IoT", "Arduino", "Esp8266", "Cloud Computing"],
+            link: "https://github.com/ahamedshakir02",
+            github: "https://github.com/ahamedshakir02",
+            order: 5
+          }
+        ];
+        for (const p of sampleProjects) {
+          try {
+            await addDoc(collection(db, 'projects'), p);
+          } catch (e) {
+            console.log("Seeding project failed (likely permission):", e);
+          }
         }
-      ];
-      for (const p of sampleProjects) {
-        await addDoc(collection(db, 'projects'), p);
       }
-    }
 
-    const expSnap = await getDocs(collection(db, 'experience'));
-    if (expSnap.empty) {
-      const sampleExp = [
-        {
-          company: "GTech µLearn | MES College",
-          role: "Campus Lead",
-          period: "July 2025 - April 2026",
-          description: "Led the campus community, increasing participation by 40%. Organized AI and Web Dev workshops for 100+ students.",
-          order: 1
+      const expSnap = await getDocs(collection(db, 'experience'));
+      if (expSnap.empty) {
+        const sampleExp = [
+          {
+            company: "GTech µLearn | MES College",
+            role: "Campus Lead",
+            period: "July 2025 - April 2026",
+            description: "Led the campus community, increasing participation by 40%. Organized AI and Web Dev workshops for 100+ students.",
+            order: 1
+          }
+        ];
+        for (const e of sampleExp) {
+          try {
+            await addDoc(collection(db, 'experience'), e);
+          } catch (e) {
+            console.log("Seeding experience failed:", e);
+          }
         }
-      ];
-      for (const e of sampleExp) {
-        await addDoc(collection(db, 'experience'), e);
       }
-    }
 
-    const postSnap = await getDocs(collection(db, 'posts'));
-    if (postSnap.empty) {
-      const samplePosts = [
-        {
-          title: "The Future of Web Interactivity",
-          content: "Web interactivity is evolving rapidly...",
-          excerpt: "How motion and gestural design are changing the way we interact with digital products.",
-          publishedAt: new Date().toISOString(),
-          authorId: "admin",
-          tags: ["Design", "Web Dev"],
-          coverImage: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop"
-        },
-        {
-          title: "Scaling React Applications in 2026",
-          content: "Scaling large projects requires discipline...",
-          excerpt: "Best practices for maintaining clean architecture in complex React ecosystems.",
-          publishedAt: new Date().toISOString(),
-          authorId: "admin",
-          tags: ["React", "Architecture"],
-          coverImage: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop"
+      const postSnap = await getDocs(collection(db, 'posts'));
+      if (postSnap.empty) {
+        const samplePosts = [
+          {
+            title: "The Future of Web Interactivity",
+            content: "Web interactivity is evolving rapidly...",
+            excerpt: "How motion and gestural design are changing the way we interact with digital products.",
+            publishedAt: new Date().toISOString(),
+            authorId: "admin",
+            tags: ["Design", "Web Dev"],
+            coverImage: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop"
+          },
+          {
+            title: "Scaling React Applications in 2026",
+            content: "Scaling large projects requires discipline...",
+            excerpt: "Best practices for maintaining clean architecture in complex React ecosystems.",
+            publishedAt: new Date().toISOString(),
+            authorId: "admin",
+            tags: ["React", "Architecture"],
+            coverImage: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop"
+          }
+        ];
+        for (const p of samplePosts) {
+          try {
+            await addDoc(collection(db, 'posts'), p);
+          } catch (e) {
+            console.log("Seeding post failed:", e);
+          }
         }
-      ];
-      for (const p of samplePosts) {
-        await addDoc(collection(db, 'posts'), p);
       }
+    } catch (e) {
+      console.warn("Permission denied during initial read/seed check. This is normal if not signed in as admin.");
     }
   }
 };

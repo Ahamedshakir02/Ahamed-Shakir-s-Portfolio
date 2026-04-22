@@ -33,7 +33,7 @@ export default function Skills() {
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 block mb-4">
               Capabilities
             </span>
-            <h2 className="text-4xl md:text-6xl font-display font-medium tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-display font-medium tracking-tight">
               My <span className="italic font-serif">Toolbox</span>
             </h2>
           </div>
